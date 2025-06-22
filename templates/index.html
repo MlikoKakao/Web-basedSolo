@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Battle Arena</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1>🔥 Solo Leveling Battle Arena</h1>
+    <p>Your HP: {{ stats["hp"] }}</p>
+    <p>Enemy HP: <span id="enemy-hp">{{ enemy["hp"] }}</span></p>
+
+    <button onclick="attack()">Attack</button>
+    <p id="log"></p>
+
+    <script src="/static/js/game.js"></script>
+</body>
+</html>
