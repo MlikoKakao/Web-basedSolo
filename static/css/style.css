@@ -1,3 +1,5 @@
+
+
 body {
     font-family: monospace;
     background-color: #1c1c1c;
@@ -5,9 +7,30 @@ body {
     text-align: center;
 }
 
-button {
-    padding: 10px 25px;
-    font-size: 18px;
+.button-bar{
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.sprite-button {
+    width: 120px;
+    height: 40px;
+    background-image: url("/static/sprites/AttackFireballSprite.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: none;
     cursor: pointer;
-    margin-top: 20px;
+    margin: 10px;
+}
+
+.sprite-attack {
+    background-position: 0 0;
+}
+
+.sprite-fireball {
+    background-position: -120px 0;
 }

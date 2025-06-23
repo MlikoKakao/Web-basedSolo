@@ -18,5 +18,11 @@ def attack():
     enemy.take_damage(dmg)
     return jsonify({"dmg": dmg, "enemy_hp": enemy.hp})
 
+@app.route("/fireball", methods=["POST"])
+def fireball():
+    dmg = player.cast_fireball()
+    enemy.take_damage(dmg)
+    return jsonify({"dmg": dmg, "enemy_hp": enemy.hp})
+
 if __name__ == "__main__":
     app.run(debug=True)
