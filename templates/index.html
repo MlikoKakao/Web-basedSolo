@@ -8,15 +8,26 @@
 <body>
 
     <h1>🔥 Solo Leveling Battle Arena</h1>
-    <p>Your HP: {{ stats["hp"] }}</p>
-    <p>Enemy HP: <span id="enemy-hp">{{ enemy["hp"] }}</span></p>
+    <p id="playerHP">Your HP: {{ stats["hp"] }}</p>
+
+    <div class="hp-bar">
+        <img src="/static/sprites/heartIcon.png" class="hp-icon" alt="heart">
+        <img src="/static/sprites/heartOutBar.png" class="hp-container" alt="OutsideHpBar">
+        <img src="/static/sprites/heartGreen.png" class="hp-fill" id="hp-fill" alt="heartGreen">
+
+    </div>
+
+
+    <progress id="playerHPBar" value="100" max="100"></progress>
+    <p id="enemyHP">Enemy HP: <span id="enemy-hp">{{ enemy["hp"] }}</span></p>
+    <progress id="enemyHPBar" value="100" max="100"></progress>
 
     <div class = "button-bar">
         <button class="action-button attack" onclick="attack()"></button>
         <button class="action-button fireball" onclick="fireball()"></button>
     </div>
-    <p id="attackBut"></p>
-    <p id="fireballBut"></p>
+
+    <p id="damageNotif"></p>
 
     <script src="/static/js/game.js"></script>
 </body>

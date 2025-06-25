@@ -2,7 +2,7 @@
 
 body {
     font-family: monospace;
-    background-color: #1c1c1c;
+    background-image: url("/static/sprites/BGPixel.png");
     color: #f0f0f0;
     text-align: center;
 }
@@ -20,12 +20,13 @@ body {
     background-image: url("/static/sprites/AttackFireballSprite.png");
     background-repeat: no-repeat;
     background-size: 160px 160px;
-    height: 52px;
+    height: 54px;
     width: 150px;
     border: none;
     cursor: pointer;
     margin: 10px;
     object-fit: cover;
+    background-color: transparent;
 }
 
 .action-button:hover {
@@ -33,10 +34,78 @@ body {
 }
 
 .action-button.attack {
-    background-position: -5px -16px;
+    background-position: -5px -17px;
 }
 
 .action-button.fireball {
     background-position: -5px -90px;
 }
 
+#playerHP {
+    position:fixed;
+    bottom: 110px;
+    left: 50px;
+}
+
+#playerHPBar {
+    position:fixed;
+    bottom: 90px;
+    left: 50px;
+    height: 25px;
+    width: 200px;
+    border-radius: 4px;
+}
+
+#enemyHP {
+    position:fixed;
+    bottom: 140px;
+    right: 50px;
+}
+
+#enemyHPBar {
+    position:fixed;
+    bottom: 120px;
+    right: 50px;
+    height: 25px;
+    width: 200px;
+    border-radius: 4px;
+}
+
+#damageNotif {
+    font-size: 30px;
+
+}
+
+.hp-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    image-rendering: pixelated;
+    margin-bottom: 10px;
+}
+
+.hp-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.hp-container {
+    width: 200px;
+    height: 24px;
+    position: relative;
+    overflow: hidden;
+    image-rendering: pixelated;
+    background-color: transparent;
+}
+
+.hp-fill {
+    height: 20px;
+    width: 270px;
+    background-repeat: repeat-x;
+    image-rendering: pixelated;
+    transition: width 0.2s ease-out;
+    background-color: transparent;
+    position: absolute;
+    left: 35px;
+    z-index: 0;
+}
