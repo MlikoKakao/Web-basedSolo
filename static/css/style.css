@@ -103,9 +103,25 @@ body {
     width: 270px;
     background-repeat: repeat-x;
     image-rendering: pixelated;
-    transition: width 0.2s ease-out;
+    transition: transform 0.2s ease-out;
     background-color: transparent;
     position: absolute;
     left: 35px;
     z-index: 0;
+    transform-origin: left;
 }
+
+#enemy-sprite {
+    position: fixed;
+    right: 100px;
+    top: 200px;
+    width: 192px;
+    height: 96px;
+    background-image: url("/static/sprites/skeleton.png");
+    background-repeat: no-repeat;
+    background-size: 960px 192px;
+    background-position-y: 0;
+    image-rendering: pixelated;
+    z-index: 1;
+}
+

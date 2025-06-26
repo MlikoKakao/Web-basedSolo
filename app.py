@@ -1,28 +1,31 @@
 from flask import Flask, render_template, request, jsonify
-from game.player import Player
-from game.enemy import Enemy
-
+from game.combat import Combat
 
 app = Flask(__name__)
-
-player = Player()
-enemy = Enemy(player.lvl)
+combat = Combat()
 
 @app.route("/")
 def index():
-    return render_template("index.html", stats=vars(player), enemy=vars(enemy))
+    return render_template("index.html", stats={"hp": combat.player.hp}, enemy={"hp": combat.enemy.hp})
 
 @app.route("/attack", methods=["POST"])
 def attack():
-    dmg = player.attack()
-    enemy.take_damage(dmg)
-    return jsonify({"dmg": dmg, "enemy_hp": enemy.hp})
+    result = combat.player_attack()
+    return jsonify(result)
 
 @app.route("/fireball", methods=["POST"])
 def fireball():
-    dmg = player.cast_fireball()
-    enemy.take_damage(dmg)
-    return jsonify({"dmg": dmg, "enemy_hp": enemy.hp})
+    result = combat.player_fireball()
+    return jsonify(result)
+
+@app.route("/enemy_turn", methods=["POST"])
+def enemy_turn():
+    result = combat.enemy_turn()
+    return jsonify(result)
+
+@app.route("/state", methods=["GET"])
+def state():
+    return jsonify(combat.get_state())
 
 if __name__ == "__main__":
     app.run(debug=True)
