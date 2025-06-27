@@ -6,17 +6,32 @@ function attack() {
             document.getElementById("damageNotif").textContent = `You hit for ${data.dmg} damage!`;
             let enemyHealth = document.getElementById("enemyHPBar")
             enemyHealth.value = data.enemy_hp;
+             const sprite = document.getElementById("enemy-sprite");
+             idlePaused = true;
+             sprite.style.backgroundPosition = "0px -450px";
+
+            setTimeout(() => {
+                 idlePaused = false;
+                 idleFrame = 0;
 
 
             if (data.turn === "enemy") {
+                idlePaused = true;
+                sprite.style.backgroundPosition = "-720px -450px";
+
                  setTimeout(() => {
                        fetch("/enemy_turn", { method: "POST" })
                              .then(res => res.json())
                              .then(enemyData => {
                                     document.getElementById("playerHP").textContent = `Your HP: ${enemyData.player_hp}`;
                              });
-                       }, 500);
-                 }
+                       }, 300);
+                 setTimeout(() => {
+                         idlePaused = false;
+                         idleFrame = 0;
+                     }, 600);
+                     }
+                 }, 1000);
             });
 }
 
@@ -46,10 +61,13 @@ function fireball(){
                 }
             });
     }
-
 let idleFrame = 0;
+let idlePaused = false;
+
 setInterval(() => {
+    if (idlePaused) return;
+
     const sprite = document.getElementById("enemy-sprite");
-    sprite.style.backgroundPosition = `-${idleFrame * 192}px 0`;
-    idleFrame = (idleFrame + 1) % 3;
-}, 200);
+    sprite.style.backgroundPosition = `-${idleFrame*790}px 0`;
+    idleFrame = (idleFrame + 1) % 2;
+}, 500);

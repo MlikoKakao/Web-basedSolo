@@ -115,13 +115,13 @@ body {
     position: fixed;
     right: 100px;
     top: 200px;
-    width: 192px;
-    height: 96px;
+    width: 220px;
+    height: 440px;
     background-image: url("/static/sprites/skeleton.png");
     background-repeat: no-repeat;
-    background-size: 960px 192px;
-    background-position-y: 0;
+    background-size: auto;
+    background-position-y: 0 0;
     image-rendering: pixelated;
-    z-index: 1;
+    overflow: hidden;
 }
 
