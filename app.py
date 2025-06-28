@@ -18,6 +18,11 @@ def fireball():
     result = combat.player_fireball()
     return jsonify(result)
 
+@app.route("/heal", methods=["POST"])
+def heal():
+    result = combat.player_heal()
+    return jsonify(result)
+
 @app.route("/enemy_turn", methods=["POST"])
 def enemy_turn():
     result = combat.enemy_turn()

@@ -17,7 +17,7 @@ body {
 }
 
 .action-button {
-    background-image: url("/static/sprites/AttackFireballSprite.png");
+    background-image: url("/static/sprites/ButtonSprite.png");
     background-repeat: no-repeat;
     background-size: 160px 160px;
     height: 54px;
@@ -34,11 +34,14 @@ body {
 }
 
 .action-button.attack {
-    background-position: -5px -17px;
+    background-position: -5px -5px;
 }
 
 .action-button.fireball {
-    background-position: -5px -90px;
+    background-position: -5px -50px;
+}
+.action-button.heal {
+    background-position: -5px -100px;
 }
 
 #playerHP {
@@ -113,7 +116,7 @@ body {
 
 #enemy-sprite {
     position: fixed;
-    right: 100px;
+    right: 200px;
     top: 200px;
     width: 220px;
     height: 440px;

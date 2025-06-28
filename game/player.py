@@ -16,6 +16,11 @@ class Player:
     def take_damage(self, dmg):
         self.hp = max(0, self.hp - dmg)
 
+    def heal(self):
+        heal_amount = 2 * self.ap
+        self.hp = min(100 + self.lvl * 10, self.hp + heal_amount)
+        return heal_amount
+
     def level_up(self):
         self.lvl += 1
         self.str += 1

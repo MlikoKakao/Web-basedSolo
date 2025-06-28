@@ -8,16 +8,30 @@ function attack() {
             enemyHealth.value = data.enemy_hp;
              const sprite = document.getElementById("enemy-sprite");
              idlePaused = true;
-             sprite.style.backgroundPosition = "0px -450px";
+             sprite.style.width = "260px";
+             sprite.style.height = "520px";
 
+             sprite.style.backgroundPosition = "0px -450px";
+            if (data.enemy_dead) {
+                const sprite = document.getElementById("enemy-sprite");
+                idlePaused = true;
+                sprite.style.backgroundImage = 'url("/static/sprites/skeleDeath.png")';
+                sprite.style.backgroundPosition = "0px 0px";
+                setTimeout(() => {
+                    sprite.style.backgroundPosition = "0px -290px";
+                },500)
+
+
+            }
             setTimeout(() => {
                  idlePaused = false;
                  idleFrame = 0;
-
-
+                 sprite.style.width = "220px";
+                 sprite.style.height = "440px";
             if (data.turn === "enemy") {
                 idlePaused = true;
                 sprite.style.backgroundPosition = "-720px -450px";
+                sprite.style.width = "400px";
 
                  setTimeout(() => {
                        fetch("/enemy_turn", { method: "POST" })
@@ -27,9 +41,15 @@ function attack() {
                              });
                        }, 300);
                  setTimeout(() => {
-                         idlePaused = false;
-                         idleFrame = 0;
-                     }, 600);
+                     idlePaused = false;
+                     idleFrame = 0;
+                     sprite.style.backgroundPosition = "0px 0";
+
+                     setTimeout(() => {
+                         sprite.style.width = "220px";
+                         sprite.style.height = "440px";
+                     }, 100);
+                 }, 600);
                      }
                  }, 1000);
             });
