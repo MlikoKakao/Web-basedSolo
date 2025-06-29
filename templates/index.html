@@ -31,6 +31,13 @@
     <p id="damageNotif"></p>
     <div id="enemy-sprite"></div>
 
+    <div id="levelup-menu" class="hidden">
+        <h2>Choose Your Reward</h2>
+        <button onclick="upgradeStat('strength')">➕ Strength</button>
+        <button onclick="upgradeStat('magic')">➕ Magic</button>
+        <button onclick="restoreHealth()">❤️ Restore Health</button>
+        <button onclick="startNextFight()">▶️ Next Fight</button>
+    </div>
 
     <script src="/static/js/game.js"></script>
 </body>

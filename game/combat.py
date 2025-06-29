@@ -24,11 +24,11 @@ class Combat:
         dmg = self.player.cast_fireball()
         self.enemy.take_damage(dmg)
         self.enemy.on_fire = True
-        self.enemy.firedmg = max(1,round(dmg * 0.2))
+        self.enemy.firedmg = max(1, round(dmg * 0.2))
         self.turn = "enemy"
 
         if self.enemy.hp <= 0:
-            return {"dmg": dmg, "enemy_hp": 0, "enemy_dead": True}
+            return {"dmg": dmg, "enemy_hp": 0, "enemy_dead": True, "turn": self.turn}
         return {"dmg": dmg, "enemy_hp": self.enemy.hp, "turn": self.turn}
 
     def player_heal(self):
@@ -36,7 +36,7 @@ class Combat:
             return {"error": "Not player's turn"}
         heal_amount = self.player.heal()
         self.turn = "enemy"
-        return {"dmg": dmg, "enemy_hp": self.enemy.hp, "turn": self.turn}
+        return {"heal_amount": heal_amount, "player_hp": self.player.hp, "turn": self.turn}
 
 
     def enemy_turn(self):
@@ -52,5 +52,7 @@ class Combat:
         return {
             "player_hp": self.player.hp,
             "enemy_hp": self.enemy.hp,
-            "turn": self.turn
+            "turn": self.turn,
+            "player_level": self.player.lvl,
+            "player_max_hp": 100
         }

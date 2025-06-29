@@ -10,3 +10,4 @@ class Enemy:
     def burn(self):
         if self.on_fire:
             self.take_damage(self.firedmg)
+
